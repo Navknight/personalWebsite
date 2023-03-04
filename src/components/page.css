@@ -90,14 +90,29 @@ h2 {
   font-style: italic;
 }
 
-.works{
-    text-align: center;
-    padding: 10rem 2rem;
-    background-color: var(--main-blue);
+.works {
+  text-align: center;
+  padding: 10rem 2rem;
+  background-color: var(--main-blue);
 }
 
-.work-header{
-    max-width: 530px;
-    margin: 0 auto 6rem auto;
-    border-bottom: 0.2rem solid var(--main-white);
+.work-header {
+  max-width: 530px;
+  margin: 0 auto 6rem auto;
+  border-bottom: 0.2rem solid var(--main-white);
+}
+
+.work-title{
+    font-size: 2rem;
+    padding: 2rem 0.5rem;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 4rem;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  margin-bottom: 6rem;
 }
