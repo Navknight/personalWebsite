@@ -21,10 +21,13 @@ export default function Page() {
         <h1>Hi I am Abhinav</h1>
         <p>And this is my webpage</p>
       </div>
-      <div className="work" id="work">
-        <h2 className="work-title">This is some of my work</h2>
+      <div className="works" id="work">
+        <h2 className="work-header">This is some of my work</h2>
         <div className="work-grid">
-            
+            <a className="work work-title">
+                <img className="work-image" src="randomQuotes.png"></img>
+                <p className="work-title">Random Quote Machine</p>
+            </a>
         </div>
       </div>
       <div className="contact" id="contact"></div>
