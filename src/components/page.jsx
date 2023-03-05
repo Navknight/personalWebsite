@@ -5,6 +5,8 @@ import sortingVisualizer from "./sortingVisualizer.png";
 import lua from "./Lua.png";
 import markdown from "./markdown.png";
 import "./page.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
 export default function Page() {
   const handleOnMouseMove = (e) => {
@@ -22,28 +24,30 @@ export default function Page() {
     }
   }, []);
 
-  const movementTrailer = (e) => {
-    let x = e.clientX;
-    let y = e.clientY;
-    e.target.style.transform = `translate(${x}px, ${y}px)`;
+  const onMouseMove = (e) => {
+    const trailer = document.getElementById("trailer");
+    const arrow = document.getElementsByClassName("arrow");
+    
+    const interactable = e.target.closest(".work"),
+      interacting = interactable !== null;
+    
+    if(!interacting) {
+      arrow[0].style.opacity = 0;
+    }
+    else
+      arrow[0].style.opacity = 1;
+
+    const x = e.clientX,
+      y = e.clientY;
+
+    const keyframes = {
+      transform: `translate(${x}px, ${y}px) scale(${interacting ? 5 : 1})`,
+      opacity: `${interacting ? 0.8 : 1}`,
+    };
+    trailer.animate(keyframes, { duration: 800, fill: "forwards" });
   };
 
   useEffect(() => {
-    const trailer = document.getElementById("trailer");
-    trailer.addEventListener("mousemove", movementTrailer);
-  }, []);
-
-  useEffect(() => {
-    const trailer = document.getElementById("trailer");
-
-    const onMouseMove = (e) => {
-      const x = e.clientX,
-        y = e.clientY ;
-
-      const keyframes = { transform: `translate(${x}px, ${y}px)` };
-      trailer.animate(keyframes, { duration: 800, fill: "forwards" });
-    };
-
     window.addEventListener("mousemove", onMouseMove);
 
     return () => {
@@ -71,7 +75,9 @@ export default function Page() {
         <p>And this is my webpage</p>
       </div>
       <div className="works" id="work">
-        <div className="trailer" id="trailer"></div>
+        <div className="trailer" id="trailer">
+          <FontAwesomeIcon className="arrow" icon= {faArrowUpRightFromSquare} />
+        </div>
         <h2 className="work-header">This is some of my work</h2>
         <div className="work-grid">
           <a className="work work-title">

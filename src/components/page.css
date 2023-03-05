@@ -125,6 +125,9 @@ h2 {
   z-index: 100000;
   pointer-events: none;
   opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .works:hover #trailer{
@@ -167,14 +170,4 @@ h2 {
   height: calc(100% - 6.8rem);
   width: 100%;
   object-fit: cover;
-}
-
-.image{
-  height: calc(100% - 6.8rem);
-  width: 100%;
-  transition:  background-size 0.5s ease;
-  background-size: 120%;
-}
-.image:hover{
-  background-size: 125%;
 }
