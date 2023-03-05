@@ -38,7 +38,7 @@ export default function Page() {
 
     const onMouseMove = (e) => {
       const x = e.clientX,
-        y = e.clientY;
+        y = e.clientY ;
 
       const keyframes = { transform: `translate(${x}px, ${y}px)` };
       trailer.animate(keyframes, { duration: 800, fill: "forwards" });
