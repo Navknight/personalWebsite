@@ -1,10 +1,56 @@
-import React from "react";
+import React, { useEffect } from "react";
 import randomQuotes from "./randomQuotes.png";
 import drumMachine from "./drumMachine.png";
 import sortingVisualizer from "./sortingVisualizer.png";
+import lua from "./Lua.png";
+import markdown from "./markdown.png";
 import "./page.css";
 
 export default function Page() {
+  const handleOnMouseMove = (e) => {
+    const { currentTarget: target } = e;
+    const rect = target.getBoundingClientRect(),
+      x = e.clientX - rect.left,
+      y = e.clientY - rect.top;
+    target.style.setProperty("--x", x + "px");
+    target.style.setProperty("--y", y + "px");
+  };
+
+  useEffect(() => {
+    for (const div of document.querySelectorAll(".about")) {
+      div.addEventListener("mousemove", handleOnMouseMove);
+    }
+  }, []);
+
+  const movementTrailer = (e) => {
+    let x = e.clientX;
+    let y = e.clientY;
+    e.target.style.transform = `translate(${x}px, ${y}px)`;
+  };
+
+  useEffect(() => {
+    const trailer = document.getElementById("trailer");
+    trailer.addEventListener("mousemove", movementTrailer);
+  }, []);
+
+  useEffect(() => {
+    const trailer = document.getElementById("trailer");
+
+    const onMouseMove = (e) => {
+      const x = e.clientX,
+        y = e.clientY;
+
+      const keyframes = { transform: `translate(${x}px, ${y}px)` };
+      trailer.animate(keyframes, { duration: 800, fill: "forwards" });
+    };
+
+    window.addEventListener("mousemove", onMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", onMouseMove);
+    };
+  }, []);
+
   return (
     <div className="body">
       <nav className="nav">
@@ -25,8 +71,17 @@ export default function Page() {
         <p>And this is my webpage</p>
       </div>
       <div className="works" id="work">
+        <div className="trailer" id="trailer"></div>
         <h2 className="work-header">This is some of my work</h2>
         <div className="work-grid">
+          <a className="work work-title">
+            <img className="work-image" src={lua}></img>
+            <p className="work-title">Interpreter for Lua</p>
+          </a>
+          <a className="work work-title">
+            <img className="work-image" src={sortingVisualizer}></img>
+            <p className="work-title">Sorting Visualizer</p>
+          </a>
           <a className="work work-title">
             <img className="work-image" src={randomQuotes}></img>
             <p className="work-title">Random Quote Machine</p>
@@ -35,9 +90,10 @@ export default function Page() {
             <img className="work-image" src={drumMachine}></img>
             <p className="work-title">Drum Machine</p>
           </a>
+
           <a className="work work-title">
-            <img className="work-image" src={sortingVisualizer}></img>
-            <p className="work-title">Sorting Visualizer</p>
+            <img className="work-image" src={markdown}></img>
+            <p className="work-title">Markdown Previewer</p>
           </a>
         </div>
       </div>

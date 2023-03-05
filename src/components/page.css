@@ -3,6 +3,8 @@
   --main-white: #f0f0f0;
   --main-blue: #45567d;
   --main-gray: #303841;
+  --x:0;
+  --y:0;
 }
 
 * {
@@ -79,8 +81,30 @@ h2 {
   align-items: center;
   height: 100vh;
   width: 100%;
-  background-color: #000;
-  background-image: linear-gradient(62deg, #3a3d40 0%, #181719 100%);
+  background-color: var(--main-gray);
+  position: relative;
+}
+
+.about::before {
+  background: radial-gradient(
+    1000px circle at var(--x) var(--y),
+    rgba(255, 255, 255, 0.15),
+    transparent 50%
+  );
+  position: absolute;
+  content: "";
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  border-radius: inherit;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+
+.about:hover::before {
+  opacity: 1;
 }
 
 .about p {
@@ -88,6 +112,23 @@ h2 {
   font-weight: 100;
   color: var(--main-red);
   font-style: italic;
+}
+
+#trailer{
+  height: 20px;
+  width: 20px;
+  background-color: var(--main-red);
+  border-radius: 20px;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 100000;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.works:hover #trailer{
+  opacity: 1;
 }
 
 .works {
@@ -126,4 +167,14 @@ h2 {
   height: calc(100% - 6.8rem);
   width: 100%;
   object-fit: cover;
+}
+
+.image{
+  height: calc(100% - 6.8rem);
+  width: 100%;
+  transition:  background-size 0.5s ease;
+  background-size: 120%;
+}
+.image:hover{
+  background-size: 125%;
 }
