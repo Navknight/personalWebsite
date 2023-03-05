@@ -27,29 +27,25 @@ export default function Page() {
   const onMouseMove = (e) => {
     const trailer = document.getElementById("trailer");
     const arrow = document.getElementsByClassName("arrow");
-    
+
     const interactable = e.target.closest(".work"),
       interacting = interactable !== null;
-    
-    if(!interacting) {
+
+    if (!interacting) {
       arrow[0].style.opacity = 0;
-    }
-    else
-      arrow[0].style.opacity = 1;
+    } else arrow[0].style.opacity = 1;
 
     const x = e.clientX,
       y = e.clientY;
 
     const keyframes = {
-      transform: `translate(${x}px, ${y}px) scale(${interacting ? 5 : 1})`,
-      opacity: `${interacting ? 0.8 : 1}`,
+      transform: `translate(${x}px, ${y}px) scale(${interacting ? 3 : 1})`,
     };
     trailer.animate(keyframes, { duration: 800, fill: "forwards" });
   };
 
   useEffect(() => {
     window.addEventListener("mousemove", onMouseMove);
-
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
     };
@@ -76,7 +72,7 @@ export default function Page() {
       </div>
       <div className="works" id="work">
         <div className="trailer" id="trailer">
-          <FontAwesomeIcon className="arrow" icon= {faArrowUpRightFromSquare} />
+          <FontAwesomeIcon className="arrow" icon={faArrowUpRightFromSquare} />
         </div>
         <h2 className="work-header">This is some of my work</h2>
         <div className="work-grid">
