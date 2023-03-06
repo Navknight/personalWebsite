@@ -76,24 +76,43 @@ export default function Page() {
         </div>
         <h2 className="work-header">This is some of my work</h2>
         <div className="work-grid">
-          <a className="work work-title">
+          <a
+            className="work work-title"
+            href="https://github.com/Navknight/SpeakingLua"
+            target="_blank"
+          >
             <img className="work-image" src={lua}></img>
             <p className="work-title">Interpreter for Lua</p>
           </a>
-          <a className="work work-title">
+          <a
+            className="work work-title"
+            href="https://github.com/Navknight/sorting-visualizer"
+            target="_blank"
+          >
             <img className="work-image" src={sortingVisualizer}></img>
             <p className="work-title">Sorting Visualizer</p>
           </a>
-          <a className="work work-title">
+          <a
+            className="work work-title"
+            href="https://github.com/Navknight/randomQuotesMachine"
+            target="_blank"
+          >
             <img className="work-image" src={randomQuotes}></img>
             <p className="work-title">Random Quote Machine</p>
           </a>
-          <a className="work work-title">
+          <a
+            className="work work-title"
+            href="https://github.com/Navknight/drumMachine"
+            target="_blank"
+          >
             <img className="work-image" src={drumMachine}></img>
             <p className="work-title">Drum Machine</p>
           </a>
-
-          <a className="work work-title">
+          <a
+            className="work work-title"
+            href="https://github.com/Navknight/markdownPreviewer"
+            target="_blank"
+          >
             <img className="work-image" src={markdown}></img>
             <p className="work-title">Markdown Previewer</p>
           </a>
